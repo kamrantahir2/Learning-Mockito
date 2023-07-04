@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
+import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -109,9 +110,12 @@ public class MathApplicationTester {
 //        test the subtract functionality
         assertEquals(mathApplication.add(20, 10), 30);
 
+        InOrder inOrder = inOrder(calcService);
+
 //        verify call to calcService is made or not
-        verify(calcService).add(20, 10);
-        verify(calcService).subtract(20, 10);
+        inOrder.verify(calcService).subtract(20, 10);
+        inOrder.verify(calcService).add(20, 10);
+
 
     }
 

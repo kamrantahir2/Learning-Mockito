@@ -100,3 +100,23 @@ So far, we've used annotations to create mocks. Mockito provides various methods
 
     - calcService = mock(CalculatorService.class);
 
+ ===================================================================
+
+               Mockito - Ordered Verification
+                    -------------------
+
+Mockito provides Inorder class which takes care of the order of method calls that the mock is going to make in due course of its action.
+
+Makes sure the methods are called in order. In the code below the add method will be called first then the subtract will be called
+
+  {
+
+        //create an inOrder verifier for a single mock
+        InOrder inOrder = inOrder(calcService);
+
+        //following will make sure that add is first called then subtract is called.
+        inOrder.verify(calcService).add(20.0,10.0);
+        inOrder.verify(calcService).subtract(20.0,10.0);
+
+  }
+
