@@ -4,3 +4,40 @@ This lesson follows the guide found at - https://www.tutorialspoint.com/mockito/
 Mocking- A way to test the functionality of a program or class in isolation
        - No database, properties file or file server needed
        - A mock object returns dummy data corresponding to dummy input pass through
+
+ =============================================================
+
+            Mockito - Adding Behaviour
+                ---------------
+
+- Mockito adds a functionality to a mock object using the methods when().
+
+ {
+
+    //add the behavior of calc service to add two numbers
+    when(calcService.add(10.0,20.0)).thenReturn(30.00);
+    Here we've instructed Mockito to give a behavior of adding 10 and 20 to the add method of calcService and as a result, to return the value of 30.00.
+
+    At this point of time, Mock recorded the behavior and is a working mock object.
+
+    //add the behavior of calc service to add two numbers
+    when(calcService.add(10.0,20.0)).thenReturn(30.00);
+
+  }
+
+===================================================================
+
+            Mockito - Verifying Behaviour
+                ---------------------
+
+ - Mockito can ensure whether a mock method is being called with required arguments or not. It is done using the verify() method.
+
+ {
+
+   //test the add functionality
+   Assert.assertEquals(calcService.add(10.0, 20.0),30.0,0);
+
+   //verify call to calcService is made or not with same arguments.
+   verify(calcService).add(10.0, 20.0);
+
+ }

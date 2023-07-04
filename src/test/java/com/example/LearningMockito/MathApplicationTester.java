@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 // @RunWith attaches a runner with the test class to initialize the test data
@@ -34,6 +35,9 @@ public class MathApplicationTester {
 
 //      test the add functionality
         assertEquals(mathApplication.add(10, 20), 30);
+
+//      verify the behavior
+        verify(calcService).add(10, 20);
     }
 
 }
