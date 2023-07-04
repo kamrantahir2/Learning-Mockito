@@ -59,3 +59,17 @@ Mocking- A way to test the functionality of a program or class in isolation
 
 
     }
+
+
+ ===================================================================
+
+             Mockito - Varying Calls
+              ---------------------
+
+- Mockito provides the following additional methods to vary the expected call counts.
+
+  atLeast (int min) − expects min calls.
+
+  atLeastOnce () − expects at least one call.
+
+  atMost (int max) − expects max calls.
