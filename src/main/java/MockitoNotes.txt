@@ -162,3 +162,16 @@ Mockito provides option to create spy on real objects. When spy is called, then 
 
     }
 
+===================================================================
+
+                     Mockito - Resetting Mocks
+                        -----------------
+
+Mockito provides the capability to a reset a mock so that it can be reused later.
+
+    {
+        //reset mock
+        reset(calcService);
+    }
+
+Here we've reset mock object. MathApplication makes use of calcService and after reset the mock, using mocked method will fail the test.

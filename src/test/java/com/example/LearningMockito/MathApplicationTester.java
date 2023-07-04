@@ -90,46 +90,46 @@ public class MathApplicationTester {
     private CalculatorService calcService;
 
 //    This will run before every test to initialise mathApplication adn calcService
-//    @Before
-//    public void setUp() {
-//        mathApplication = new MathApplication();
-//        calcService = mock(CalculatorService.class);
-//        mathApplication.setCalculatorService(calcService);
-//    }
-
-    @Test
-    public void testAddAndSubtract() {
-
-//        add the behavior to add numbers
-        when(calcService.add(20, 10)).thenReturn(30.0);
-
-//        subtract the behavior to subtract numbers
-        when(calcService.subtract(20, 10)).thenReturn(10.0);
-
-//        test the subtract functionality
-        assertEquals(mathApplication.subtract(20, 10), 10);
-
-//        test the subtract functionality
-        assertEquals(mathApplication.add(20, 10), 30);
-
-        InOrder inOrder = inOrder(calcService);
-
-//        verify call to calcService is made or not
-        inOrder.verify(calcService).subtract(20, 10);
-        inOrder.verify(calcService).add(20, 10);
-
-
-    }
-
-//    ===================================================
-
     @Before
     public void setUp() {
         mathApplication = new MathApplication();
-        Calculator calculator = new Calculator();
-        calcService = spy(calculator);
+        calcService = mock(CalculatorService.class);
         mathApplication.setCalculatorService(calcService);
     }
+
+//    @Test
+//    public void testAddAndSubtract() {
+//
+////        add the behavior to add numbers
+//        when(calcService.add(20, 10)).thenReturn(30.0);
+//
+////        subtract the behavior to subtract numbers
+//        when(calcService.subtract(20, 10)).thenReturn(10.0);
+//
+////        test the subtract functionality
+//        assertEquals(mathApplication.subtract(20, 10), 10);
+//
+////        test the subtract functionality
+//        assertEquals(mathApplication.add(20, 10), 30);
+//
+//        InOrder inOrder = inOrder(calcService);
+//
+////        verify call to calcService is made or not
+//        inOrder.verify(calcService).subtract(20, 10);
+//        inOrder.verify(calcService).add(20, 10);
+//
+//
+//    }
+
+//    ===================================================
+
+//    @Before
+//    public void setUp() {
+//        mathApplication = new MathApplication();
+//        Calculator calculator = new Calculator();
+//        calcService = spy(calculator);
+//        mathApplication.setCalculatorService(calcService);
+//    }
 
     class Calculator implements CalculatorService {
         @Override
@@ -168,6 +168,23 @@ public class MathApplicationTester {
 
 //        test the add functionality
         assertEquals(mathApplication.add(20, 10), 30);
+    }
+
+    @Test
+    public void testAddAndSubtract() {
+
+//        add the behavior to add numbers
+        when(calcService.add(20, 10)).thenReturn(30.0);
+
+//        test the add functionality
+        assertEquals(mathApplication.add(20, 10), 30.0);
+
+//        reset the mock
+        reset(calcService);
+
+////        test the add functionality after resetting the mock
+//        assertEquals(mathApplication.subtract(20, 10), 30.0);
+
     }
 
 
