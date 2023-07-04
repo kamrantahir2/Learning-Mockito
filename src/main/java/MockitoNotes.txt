@@ -73,3 +73,20 @@ Mocking- A way to test the functionality of a program or class in isolation
   atLeastOnce () − expects at least one call.
 
   atMost (int max) − expects max calls.
+
+ ===================================================================
+
+               Mockito - Exception Handling
+                ---------------------
+
+Mockito provides the capability for a mock to throw exceptions, so exception handling can be tested. Take a look at the following code snippet.
+
+{
+
+        //add the behavior to throw exception
+        doThrow(new Runtime Exception("divide operation not implemented"))
+           .when(calcService).add(10.0,20.0);
+
+}
+
+Here we've added an exception clause to a mock object. MathApplication makes use of calcService using its add method and the mock throws a RuntimeException whenever calcService.add() method is invoked.
