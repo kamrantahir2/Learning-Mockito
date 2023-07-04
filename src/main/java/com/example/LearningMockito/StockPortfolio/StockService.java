@@ -1,6 +1,5 @@
-package com.example.LearningMockito;
+package com.example.LearningMockito.StockPortfolio;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service

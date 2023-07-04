@@ -1,4 +1,4 @@
-package com.example.LearningMockito;
+package com.example.LearningMockito.StockPortfolio;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -3,11 +3,17 @@ package com.example.LearningMockito;
 // This lesson follows the guide found at - https://www.tutorialspoint.com/mockito/mockito_environment.htm
 
 
+import com.example.LearningMockito.StockPortfolio.Portfolio;
+import com.example.LearningMockito.StockPortfolio.Stock;
+import com.example.LearningMockito.StockPortfolio.StockService;
+import org.springframework.boot.test.context.SpringBootTest;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Mockito.*;
 
+@SpringBootTest
 public class PortfolioTester {
 //
 ////      Portfolio - An object to carry a list of stocks and to get the market value computed using stock prices and stock quantity

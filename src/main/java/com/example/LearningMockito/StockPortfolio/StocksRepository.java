@@ -1,4 +1,4 @@
-package com.example.LearningMockito;
+package com.example.LearningMockito.StockPortfolio;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
