@@ -171,38 +171,64 @@ public class MathApplicationTester {
 //        assertEquals(mathApplication.add(20, 10), 30);
 //    }
 
-    @Test
-    public void testAddAndSubtract() {
-
-//        add the behavior to add numbers
-        when(calcService.add(20, 10)).thenReturn(30.0);
-
-//        test the add functionality
-        assertEquals(mathApplication.add(20, 10), 30.0);
-
-//        reset the mock
-        reset(calcService);
-
-////        test the add functionality after resetting the mock
-//        assertEquals(mathApplication.subtract(20, 10), 30.0);
-
-    }
+//    @Test
+//    public void testAddAndSubtract() {
+//
+////        add the behavior to add numbers
+//        when(calcService.add(20, 10)).thenReturn(30.0);
+//
+////        test the add functionality
+//        assertEquals(mathApplication.add(20, 10), 30.0);
+//
+////        reset the mock
+//        reset(calcService);
+//
+//////        test the add functionality after resetting the mock
+////        assertEquals(mathApplication.subtract(20, 10), 30.0);
+//
+//    }
 
 //  ============================================================
 
 //              Mockito - Given, When, Then
 //                 --------------------
 
-    @Test
-    public void testAdd() {
-//        Given
-        given(calcService.add(20, 10)).willReturn(30.0);
+//    @Test
+//    public void testAdd() {
+////        Given
+//        given(calcService.add(20, 10)).willReturn(30.0);
+//
+////        When
+//        double result = calcService.add(20, 10);
+//
+////        Then
+//        assertEquals(result, 30.0);
+//
+//    }
 
-//        When
-        double result = calcService.add(20, 10);
+//  ============================================================
 
-//        Then
-        assertEquals(result, 30.0);
+    //              Mockito - Timeout
+//                     ------------
+        @Test
+    public void testAddAndSubtract() {
+
+//        add the behavior to add numbers
+        when(calcService.add(20, 10)).thenReturn(30.0);
+
+//        subtract the behavior to subtract numbers
+        when(calcService.subtract(20, 10)).thenReturn(10.0);
+
+//        test the subtract functionality
+        assertEquals(mathApplication.subtract(20, 10), 10);
+
+//        test the subtract functionality
+        assertEquals(mathApplication.add(20, 10), 30);
+
+//        verify call to calcService is made or not
+        verify(calcService, timeout(100).times(1)).subtract(20, 10);
+        verify(calcService, timeout(100).times(1)).add(20, 10);
+
 
     }
 

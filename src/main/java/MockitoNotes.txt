@@ -195,3 +195,17 @@ Behavior Driven Development is a style of writing tests uses given, when and the
         Assert.assertEquals(result,30.0,0);
 
     }
+
+    ===================================================================
+
+                      Mockito - Timeouts
+                       ----------------
+
+Mockito provides a special Timeout option to test if a method is called within stipulated time frame.
+
+    {
+
+        //passes when add() is called within 100 ms.
+        verify(calcService,timeout(100)).add(20.0,10.0);
+
+    }
