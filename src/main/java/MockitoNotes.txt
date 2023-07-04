@@ -175,3 +175,23 @@ Mockito provides the capability to a reset a mock so that it can be reused later
     }
 
 Here we've reset mock object. MathApplication makes use of calcService and after reset the mock, using mocked method will fail the test.
+
+===================================================================
+
+                  Mockito - Behaviour Driven Development
+                       ------------------------
+
+Behavior Driven Development is a style of writing tests uses given, when and then format as test methods. Mockito provides special methods to do so.
+
+    {
+
+        //Given
+        given(calcService.add(20.0,10.0)).willReturn(30.0);
+
+        //when
+        double result = calcService.add(20.0,10.0);
+
+        //then
+        Assert.assertEquals(result,30.0,0);
+
+    }

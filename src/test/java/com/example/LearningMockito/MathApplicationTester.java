@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
 // @RunWith attaches a runner with the test class to initialize the test data
@@ -154,21 +155,21 @@ public class MathApplicationTester {
     }
 
 //   Creating a mock object using Answer
-    @Test
-    public void testAdd() {
-        when(calcService.add(20, 10)).thenAnswer(new Answer<Double>() {
-            @Override
-            public Double answer(InvocationOnMock invocation) throws Throwable {
-//                get the arguments passed to mock
-                Object[] args = invocation.getArguments();
-                Object mock = invocation.getMock();
-                return 30.0;
-            }
-        });
-
-//        test the add functionality
-        assertEquals(mathApplication.add(20, 10), 30);
-    }
+//    @Test
+//    public void testAdd() {
+//        when(calcService.add(20, 10)).thenAnswer(new Answer<Double>() {
+//            @Override
+//            public Double answer(InvocationOnMock invocation) throws Throwable {
+////                get the arguments passed to mock
+//                Object[] args = invocation.getArguments();
+//                Object mock = invocation.getMock();
+//                return 30.0;
+//            }
+//        });
+//
+////        test the add functionality
+//        assertEquals(mathApplication.add(20, 10), 30);
+//    }
 
     @Test
     public void testAddAndSubtract() {
@@ -187,5 +188,22 @@ public class MathApplicationTester {
 
     }
 
+//  ============================================================
+
+//              Mockito - Given, When, Then
+//                 --------------------
+
+    @Test
+    public void testAdd() {
+//        Given
+        given(calcService.add(20, 10)).willReturn(30.0);
+
+//        When
+        double result = calcService.add(20, 10);
+
+//        Then
+        assertEquals(result, 30.0);
+
+    }
 
 }
