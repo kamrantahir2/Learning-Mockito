@@ -1,0 +1,4 @@
+
+Mocking- A way to test the functionality of a program or class in isolation
+       - No database, properties file or file server needed
+       - A mock object returns dummy data corresponding to dummy input pass through
