@@ -41,3 +41,21 @@ Mocking- A way to test the functionality of a program or class in isolation
    verify(calcService).add(10.0, 20.0);
 
  }
+
+ ===================================================================
+
+             Mockito - Expecting Calls
+                 ---------------------
+
+ - Mockito provides a special check on the number of calls that can be made on a particular method. Suppose MathApplication should call the CalculatorService.serviceUsed() method only once, then it should not be able to call CalculatorService.serviceUsed() more than once.
+
+    {
+
+        //add the behavior of calc service to add two numbers
+        when(calcService.add(10.0,20.0)).thenReturn(30.00);
+
+        //limit the method call to 1, no less and no more calls are allowed
+        verify(calcService, times(1)).add(10.0, 20.0);
+
+
+    }

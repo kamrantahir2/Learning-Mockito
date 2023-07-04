@@ -4,6 +4,7 @@ import com.example.LearningMockito.MathApplication.CalculatorService;
 import com.example.LearningMockito.MathApplication.MathApplication;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -12,8 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 // @RunWith attaches a runner with the test class to initialize the test data
 @RunWith(MockitoJUnitRunner.class)
@@ -28,6 +28,7 @@ public class MathApplicationTester {
     @Mock
     CalculatorService calcService;
 
+    @DisplayName("Testing add functionality")
     @Test
     public void testAdd() {
 //      add the behavior of calc service to add two numbers
@@ -37,7 +38,7 @@ public class MathApplicationTester {
         assertEquals(mathApplication.add(10, 20), 30);
 
 //      verify the behavior
-        verify(calcService).add(10, 20);
+        verify(calcService, times(1)).add(10, 20);
     }
 
 }
