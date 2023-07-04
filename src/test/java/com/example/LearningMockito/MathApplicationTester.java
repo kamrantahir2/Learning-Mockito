@@ -90,12 +90,12 @@ public class MathApplicationTester {
     private CalculatorService calcService;
 
 //    This will run before every test to initialise mathApplication adn calcService
-    @Before
-    public void setUp() {
-        mathApplication = new MathApplication();
-        calcService = mock(CalculatorService.class);
-        mathApplication.setCalculatorService(calcService);
-    }
+//    @Before
+//    public void setUp() {
+//        mathApplication = new MathApplication();
+//        calcService = mock(CalculatorService.class);
+//        mathApplication.setCalculatorService(calcService);
+//    }
 
     @Test
     public void testAddAndSubtract() {
@@ -119,6 +119,38 @@ public class MathApplicationTester {
         inOrder.verify(calcService).add(20, 10);
 
 
+    }
+
+//    ===================================================
+
+    @Before
+    public void setUp() {
+        mathApplication = new MathApplication();
+        Calculator calculator = new Calculator();
+        calcService = spy(calculator);
+        mathApplication.setCalculatorService(calcService);
+    }
+
+    class Calculator implements CalculatorService {
+        @Override
+        public double add(double input1, double input2) {
+            return input1 + input2;
+        }
+
+        @Override
+        public double subtract(double input1, double input2) {
+            throw new UnsupportedOperationException("Method not implemented yet!");
+        }
+
+        @Override
+        public double multiply(double input1, double input2) {
+            throw new UnsupportedOperationException("Method not implemented yet!");
+        }
+
+        @Override
+        public double divide(double input1, double input2) {
+            throw new UnsupportedOperationException("Method not implemented yet!");
+        }
     }
 
 //   Creating a mock object using Answer

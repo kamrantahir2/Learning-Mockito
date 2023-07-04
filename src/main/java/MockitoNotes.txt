@@ -143,3 +143,22 @@ Mockito provides an Answer interface which allows stubbing with generic interfac
             });
 
     }
+
+       ===================================================================
+
+                     Mockito - Spying
+                        ----------
+
+Mockito provides option to create spy on real objects. When spy is called, then actual method of real object is called.
+
+    {
+
+        //create a spy on actual object
+        calcService = spy(calculator);
+
+        //perform operation on real object
+        //test the add functionality
+        Assert.assertEquals(mathApplication.add(20.0, 10.0),30.0,0);
+
+    }
+
