@@ -3,6 +3,7 @@ package com.example.LearningMockito;
 import com.example.LearningMockito.MathApplication.CalculatorService;
 import com.example.LearningMockito.MathApplication.MathApplication;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
@@ -20,14 +21,20 @@ import static org.mockito.Mockito.*;
 @SpringBootTest
 public class MathApplicationTester {
 
+//     =========================================================================
+            //            Original Code
+            //              --------
+
 //  @InjectMocks annotation is used to create and inject the mock object
-    @InjectMocks
-    MathApplication mathApplication = new MathApplication();
+//    @InjectMocks
+//    MathApplication mathApplication = new MathApplication();
 
 //  @Mock annotation is used to create the mock object to be injected
-    @Mock
-    CalculatorService calcService;
+//    @Mock
 
+//    private CalculatorService calcService;
+//    private MathApplication mathApplication;
+//
 //    @DisplayName("Testing add functionality")
 //    @Test
 //    public void testAdd() {
@@ -55,14 +62,57 @@ public class MathApplicationTester {
 //        verify(calcService, atMost(3)).add(10.0,20.0);
 //    }
 //
-    @Test(expected = RuntimeException.class)
-    public void testAdd() {
 
-//      add the behavior to throw exception
-        doThrow(new RuntimeException("Add operation not implement"))
-                .when(calcService.add(10,20));
+//  ===================================================================================
 
-        assertEquals(mathApplication.add(10, 20), 30);
+//          Mockito - Exception Handling
+//              -------------------
+
+//    @Test(expected = RuntimeException.class)
+//    public void testAdd() {
+//
+////      add the behavior to throw exception
+//        doThrow(new RuntimeException("Add operation not implement"))
+//                .when(calcService.add(10,20));
+//
+//        assertEquals(mathApplication.add(10, 20), 30);
+//    }
+
+//  ===================================================================================
+
+//             Mockito - Create Mock
+//              -------------------
+
+    private MathApplication mathApplication;
+    private CalculatorService calcService;
+
+//    This will run before every test to initialise mathApplication adn calcService
+    @Before
+    public void setUp() {
+        mathApplication = new MathApplication();
+        calcService = mock(CalculatorService.class);
+        mathApplication.setCalculatorService(calcService);
+    }
+
+    @Test
+    public void testAddAndSubtract() {
+
+//        add the behavior to add numbers
+        when(calcService.add(20, 10)).thenReturn(30.0);
+
+//        subtract the behavior to subtract numbers
+        when(calcService.subtract(20, 10)).thenReturn(10.0);
+
+//        test the subtract functionality
+        assertEquals(mathApplication.subtract(20, 10), 10);
+
+//        test the subtract functionality
+        assertEquals(mathApplication.add(20, 10), 30);
+
+//        verify call to calcService is made or not
+        verify(calcService).add(20, 10);
+        verify(calcService).subtract(20, 10);
+
     }
 
 

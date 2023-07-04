@@ -90,3 +90,13 @@ Mockito provides the capability for a mock to throw exceptions, so exception han
 }
 
 Here we've added an exception clause to a mock object. MathApplication makes use of calcService using its add method and the mock throws a RuntimeException whenever calcService.add() method is invoked.
+
+ ===================================================================
+
+               Mockito - Create Mock
+                -------------------
+
+So far, we've used annotations to create mocks. Mockito provides various methods to create mock objects. mock() creates mocks without bothering about the order of method calls that the mock is going to make in due course of its action.
+
+    - calcService = mock(CalculatorService.class);
+
