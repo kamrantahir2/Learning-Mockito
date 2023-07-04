@@ -10,7 +10,9 @@ import org.junit.runner.RunWith;
 import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.stubbing.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -117,6 +119,23 @@ public class MathApplicationTester {
         inOrder.verify(calcService).add(20, 10);
 
 
+    }
+
+//   Creating a mock object using Answer
+    @Test
+    public void testAdd() {
+        when(calcService.add(20, 10)).thenAnswer(new Answer<Double>() {
+            @Override
+            public Double answer(InvocationOnMock invocation) throws Throwable {
+//                get the arguments passed to mock
+                Object[] args = invocation.getArguments();
+                Object mock = invocation.getMock();
+                return 30.0;
+            }
+        });
+
+//        test the add functionality
+        assertEquals(mathApplication.add(20, 10), 30);
     }
 
 

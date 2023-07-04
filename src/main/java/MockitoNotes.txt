@@ -120,3 +120,26 @@ Makes sure the methods are called in order. In the code below the add method wil
 
   }
 
+   ===================================================================
+
+                 Mockito - Callbacks
+                    --------------
+
+Mockito provides an Answer interface which allows stubbing with generic interface.
+
+    {
+
+            //add the behavior to add numbers
+            when(calcService.add(20.0,10.0)).thenAnswer(new Answer<Double>() {
+               @Override
+               public Double answer(InvocationOnMock invocation) throws Throwable {
+                  //get the arguments passed to mock
+                  Object[] args = invocation.getArguments();
+                  //get the mock
+                  Object mock = invocation.getMock();
+                  //return the result
+                  return 30.0;
+               }
+            });
+
+    }
