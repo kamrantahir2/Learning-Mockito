@@ -6,8 +6,8 @@ import java.util.List;
 
 @Component
 public class Portfolio {
-    private List<Stock> stocksList;
-    private double marketValue;
+    private StockService stockService;
+    private List<Stock> stocks;
 
     public StockService getStockService() {
         return stockService;
@@ -17,35 +17,20 @@ public class Portfolio {
         this.stockService = stockService;
     }
 
-    private StockService stockService;
-
-    public Portfolio() {
+    public List<Stock> getStocks() {
+        return stocks;
     }
 
-
-    public double getMarketValue() {
-        return marketValue;
+    public void setStocks(List<Stock> stocks) {
+        this.stocks = stocks;
     }
 
-    public void setMarketValue() {
-        float sum = 0;
-        for (Stock stock : stocksList) {
-            sum += (stock.getPrice() * stock.getQuantity());
+    public double getMarketValue(){
+        double marketValue = 0.0;
+
+        for(Stock stock:stocks){
+            marketValue += stockService.getPrice(stock) * stock.getQuantity();
         }
-            this.marketValue = sum;
-    }
-
-
-
-    public Portfolio(List<Stock> stocksList) {
-        this.stocksList = stocksList;
-    }
-
-    public List<Stock> getStocksList() {
-        return stocksList;
-    }
-
-    public void setStocksList(List<Stock> stocksList) {
-        this.stocksList = stocksList;
+        return marketValue;
     }
 }
