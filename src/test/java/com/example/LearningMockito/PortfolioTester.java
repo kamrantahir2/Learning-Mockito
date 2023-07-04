@@ -8,6 +8,22 @@ import static org.mockito.Mockito.*;
 public class PortfolioTester {
     public static void main(String[] args){
 
+//      Portfolio - An object to carry a list of stocks and to get the market value computed using stock prices and stock quantity
+
+//      Stock - An object to carry the details of a stock such as its id, name, quantity, etc
+
+//      StockService − A stock service returns the current price of a stock.
+
+//      mock(stockService) − Mockito created a mock of stock service.
+
+//      when(...).thenReturn(...) − Mock implementation of getPrice method of stockService interface. For googleStock, return 50.00 as price.
+
+//      portfolio.setStocks(...) − The portfolio now contains a list of two stocks.
+
+//      portfolio.setStockService(...) − Assigns the stockService Mock object to the portfolio
+
+//      portfolio.getMarketValue() − The portfolio returns the market value based on its stocks using the mock stock service.
+
         //Create a portfolio object which is to be tested
         Portfolio portfolio = new Portfolio();
 
